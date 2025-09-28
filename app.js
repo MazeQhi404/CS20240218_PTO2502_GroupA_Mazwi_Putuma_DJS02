@@ -20,3 +20,15 @@ podcasts.forEach(podcast => {
 });
 
 //Listen for custom event
+document.addEventListener('podcast-selected', (e) => {
+    const {id, title, genres, seasons, updated } = e.detail;
+    const formattedDate = updated
+      ? new Date(updated).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }) : 'Unknown'; 
+    document.getElementById('output').textContent = `Selected 
+    Podcast: \nID: ${id}\nTitle: ${title}\nGenres: ${genres.join(', ')} 
+    \nSeasons: ${seasons}\nLast Updated: ${formattedDate}`;
+});
