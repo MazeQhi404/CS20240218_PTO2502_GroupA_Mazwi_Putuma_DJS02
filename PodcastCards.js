@@ -133,8 +133,22 @@ class PodcastPreview extends HTMLElement {
         const image = document.createElement('img');
         image.className= 'podcast-image';
         //🌸
-        this.attributeChangedCallback()
+        this.attributeChangedCallback('seasons', null, this.getAttribute('seasons'));
+        this.attributeChangedCallback('updated', null, this.getAttribute('updated'));
     }
 
-
+    /**
+     * Sets podcast data as a property and updates attributes.
+     * @param {Object} data - The podcast data object.
+     */
+    set podcastData(data) {
+        if (data) {
+            this.setAttribute('id', data.id || '');
+            this.setAttribute('title', data.title || '');
+            this.setAttribute('genres', data.genres || '');
+            this.setAttribute('seasons', data.seasons || '0');
+            this.setAttribute('image', data.image || '');
+            this.setAttribute('updated', data.updated || '');
+        }
+    }
 }
