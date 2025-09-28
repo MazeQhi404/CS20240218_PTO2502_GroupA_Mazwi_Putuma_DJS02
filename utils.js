@@ -16,5 +16,16 @@ export function formatDate(dateString) {
 }
 
 /**
- * Maps
+ * Maps genre IDs to their corresponding titles.
+ * @param {number[]} genreIds - Array of genre IDs.
+ * @param {Object[]} genreData - Array of genre objects with id and title.
+ * @returns {string} Comma-separated string of genre titles.
  */
+
+export function mapGenres(genreIds, genreData) {
+    const genreMap = genreData.reduce((map, genre) => {
+        map[genre.id] = genre.title;
+        return map;
+    }, {});
+    return genreIds.map(id => genreMap[id] || 'Unknown').join(', ');
+}
