@@ -92,6 +92,15 @@ class PodcastPreview extends HTMLElement {
     }
 
     /**
+     * Returns the attributes to observe for changes.
+     * @static
+     * @returns {string[]} Array of attribute names
+     */
+    static get observedAttributes() {
+        return ['id', 'title', 'genres', 'seasons', 'image', 'updated'];
+    }
+
+    /**
      * Handles attribute changes and updates the DOM
      * @param {string} name - The name of the attribute that changed.
      * @param {string|null} oldValue - The previous value of the attribute.
@@ -110,6 +119,21 @@ class PodcastPreview extends HTMLElement {
         } else if (name === 'updated') {
             shadow.querySelector('.podcast-updated').textContent = `Last Updated ${formatDate(newValue)}`;
         }
+    }
+
+    /**
+     * Initialises the component when added to the DOM
+     */
+
+    connectedCallback() {
+        this.attributeChangedCallback('id', null, this.getAttribute('id'));
+        this.attributeChangedCallback('image', null, this.getAttribute('image'));
+        this.attributeChangedCallback('title', null, this.getAttribute(title));
+        this.attributeChangedpodcast data 
+        const image = document.createElement('img');
+        image.className= 'podcast-image';
+        //🌸
+        this.attributeChangedCallback()
     }
 
 
