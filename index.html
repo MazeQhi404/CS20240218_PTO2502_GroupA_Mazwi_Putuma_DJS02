@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast Preview</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podcast Preview Demo</title>
+  <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
@@ -18,28 +18,26 @@
       justify-content: center;
     }
     #output {
-      margin-top: 20px;
+      margin: 20px auto;
       padding: 15px;
       background-color: #e0e0e0;
       border-radius: 8px;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
       font-size: 0.9rem;
+      border: 1px solid #ccc; /* Added for visibility */
     }
     h1 {
       text-align: center;
       color: #333;
     }
-    </style>
+  </style>
 </head>
 <body>
   <h1>Podcast Preview Web Component Demo</h1>
-  <div class="container"></div>
   <div id="output">Click a podcast to see details here.</div>
+  <div class="container"></div>
 
   <script type="module" src="PodcastCards.js"></script>
   <script type="module" src="app.js"></script>
-    
 </body>
 </html>
