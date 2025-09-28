@@ -90,4 +90,27 @@ class PodcastPreview extends HTMLElement {
         }.bind(this));
 
     }
+
+    /**
+     * Handles attribute changes and updates the DOM
+     * @param {string} name - The name of the attribute that changed.
+     * @param {string|null} oldValue - The previous value of the attribute.
+     * @param {string|null} newValue - The new value of the attribute.
+     */
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if(!this.shadowRoot) return;
+        const shadow = this.shadowRoot;
+        if (name === 'image') {
+            shadow.querySelector('.podcast-image').src = newValue || 'https://via.placeholder.com/300';         
+        } else if (name === 'title') {
+            shadow.querySelector('.podcast-title').textContent = newValue || 'Untiltled Podcast';
+        } else if (name === 'genres') {
+            shadow.querySelector('.podcast-genres').textContent = `Genres: ${newValue || 'Unknown'}`;
+        } else if (name === 'updated') {
+            shadow.querySelector('.podcast-updated').textContent = `Last Updated ${formatDate(newValue)}`;
+        }
+    }
+
+
 }
