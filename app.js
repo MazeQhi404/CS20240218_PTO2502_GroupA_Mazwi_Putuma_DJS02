@@ -2,7 +2,7 @@
  * Application logic to initialise podcast-preview components and handle events.
  */
 import {podcasts, genres } from './data.js';
-import { mapGenres } from './utils';
+import { mapGenres } from './utils.js';
 
 //Dynamically create podcast-preview components
 const container = document.querySelector('.container');

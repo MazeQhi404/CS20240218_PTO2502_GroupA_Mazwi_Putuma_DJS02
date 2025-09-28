@@ -1,10 +1,10 @@
 
-import { podcastStyles } from `./styles.js`;
-import { formatDate } from `./utils.js`;
+import { podcastStyles } from './styles.js';
+import { formatDate } from './utils.js';
 
 class PodcastPreview extends HTMLElement {
     /**
-     * Constructor for PodcastPreciew component.
+     * Constructor for PodcastPreview component.
      * Initialises the Shadow DOM and sets up the component's structure.
      */
     constructor() {
@@ -42,6 +42,7 @@ class PodcastPreview extends HTMLElement {
         shadow.appendChild(wrapper);
         wrapper.appendChild(image);
         wrapper.appendChild(title);
+        wrapper.appendChild(genres);
         wrapper.appendChild(seasons);
         wrapper.appendChild(updated);
 
@@ -78,15 +79,11 @@ class PodcastPreview extends HTMLElement {
 
             //Creates and dispatches the custom event
             var event = new CustomEvent('podcast-selected', {
-                dteail: detail,
+                detail: detail,
                 bubbles: true,
                 composed: true
             });
             this.dispatchEvent(event);
-
-
-
-            
         }.bind(this));
 
     }
@@ -113,11 +110,13 @@ class PodcastPreview extends HTMLElement {
         if (name === 'image') {
             shadow.querySelector('.podcast-image').src = newValue || 'https://via.placeholder.com/300';         
         } else if (name === 'title') {
-            shadow.querySelector('.podcast-title').textContent = newValue || 'Untiltled Podcast';
+            shadow.querySelector('.podcast-title').textContent = newValue || 'Untitled Podcast';
         } else if (name === 'genres') {
             shadow.querySelector('.podcast-genres').textContent = `Genres: ${newValue || 'Unknown'}`;
+        } else if (name === 'seasons') {
+            shadow.querySelector('.podcast-seasons').textContent = `Seasons: ${newValue || '0'}`;
         } else if (name === 'updated') {
-            shadow.querySelector('.podcast-updated').textContent = `Last Updated ${formatDate(newValue)}`;
+            shadow.querySelector('.podcast-updated').textContent = `Last Updated: ${formatDate(newValue)}`;
         }
     }
 
@@ -128,11 +127,8 @@ class PodcastPreview extends HTMLElement {
     connectedCallback() {
         this.attributeChangedCallback('id', null, this.getAttribute('id'));
         this.attributeChangedCallback('image', null, this.getAttribute('image'));
-        this.attributeChangedCallback('title', null, this.getAttribute(title));
-        this.attributeChangedpodcast data 
-        const image = document.createElement('img');
-        image.className= 'podcast-image';
-        //🌸
+        this.attributeChangedCallback('title', null, this.getAttribute('title'));
+        this.attributeChangedCallback('genres', null, this.getAttribute('genres'));
         this.attributeChangedCallback('seasons', null, this.getAttribute('seasons'));
         this.attributeChangedCallback('updated', null, this.getAttribute('updated'));
     }
