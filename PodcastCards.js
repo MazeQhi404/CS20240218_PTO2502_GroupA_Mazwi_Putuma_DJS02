@@ -152,3 +152,6 @@ class PodcastPreview extends HTMLElement {
         }
     }
 }
+
+//Define the custom element
+customElements.define('podcast-preview', PodcastPreview);
