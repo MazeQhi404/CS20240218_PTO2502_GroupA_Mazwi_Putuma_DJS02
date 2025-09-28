@@ -45,9 +45,49 @@ class PodcastPreview extends HTMLElement {
         wrapper.appendChild(seasons);
         wrapper.appendChild(updated);
 
-        
+        //Handles click event
+        wrapper.addEventListener('click', function () {
+            // Gets the genres attribute and convert it to an array
+            var genresString = this.getAttribute('genres');
+            var genresArray = [];
+            if (genresString) {
+                genresArray = genresString.split(',').map(function(genre) {
+                    return genre.trim();
+                });
+            }
+
+            //Get other attributes
+            var id = this.getAttribute('id') || '';
+            var title = this.getAttribute('title') || '';
+            var seasons = this.getAttribute('seasons') || '0';
+            var image = this.getAttribute('image') || '';
+            var updated = this.getAttribute('updated') || '';
+
+            //Converts seasons to a number
+            seasons = parseInt(seasons, 10);
+
+            //Creates the detail object for the custom event
+            var detail = {
+                id: id,
+                title: title,
+                genres: genresArray,
+                seasons: seasons,
+                image: image,
+                updated: updated
+            };
+
+            //Creates and dispatches the custom event
+            var event = new CustomEvent('podcast-selected', {
+                dteail: detail,
+                bubbles: true,
+                composed: true
+            });
+            this.dispatchEvent(event);
 
 
+
+            
+        }.bind(this));
 
     }
 }
